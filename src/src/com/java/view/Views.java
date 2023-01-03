@@ -175,15 +175,14 @@ public class Views {
     }
 
     // Function for printing all package information
-    public void printAll(Package[] packages){
-        // Check if lockers are empty
-        if (packages == null || packages.length == 0){
-            System.out.println("--- No Packages Yet ---\n");
-            return;
-        }
-
-        for (int i = 0; i < packages.length; i++){
-            printPackage(packages[i]);
+    public void printAll(Package[][] packages){
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                if(packages[i][j] != null){
+                    System.out.print((i+1) + " row, " + (j+1) + " column, ");
+                    printPackage(packages[i][j]);
+                }
+            }
         }
     }
 
