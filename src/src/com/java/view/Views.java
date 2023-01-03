@@ -2,8 +2,6 @@ package com.java.view;
 
 import com.java.bean.Package;
 
-import javax.swing.text.html.HTMLDocument;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Views {
@@ -22,15 +20,16 @@ public class Views {
 
     /**
      * Menu for User (Insert)
+     *
      * @return The mode users choose.
      */
-    public int menu(){
+    public int menu() {
         System.out.println(
                 "Please Follow the Instruction and Select the Mode: \n" +
-                "   0 --> Exit\n" +
-                "   1 --> Insert\n" +
-                "   2 --> Unlock\n" +
-                "Enter: ");
+                        "   0 --> Exit\n" +
+                        "   1 --> Insert\n" +
+                        "   2 --> Unlock\n" +
+                        "Enter: ");
 
         // Catch User Input
         String mode = input.nextLine();
@@ -51,9 +50,10 @@ public class Views {
 
     /**
      * Menu for User (Unlock)
+     *
      * @return the code users enter.
      */
-    public int uMenu(){
+    public int uMenu() {
         System.out.println("Please Enter your Code: ");
 
         // Catch User Input
@@ -75,12 +75,13 @@ public class Views {
 
     /**
      * Function for Insert
+     *
      * @return the Package with package number and its company.
      */
-    public Package insert(){
+    public Package insert() {
         System.out.println(
                 "Please follow the instruction:\n" +
-                        "Package Number: "+
+                        "Package Number: " +
                         "Package Company: ");
         String number = input.nextLine();
         String company = input.nextLine();
@@ -91,7 +92,7 @@ public class Views {
     }
 
     // Function for finding a package by its number
-    public String findByNumber(){
+    public String findByNumber() {
         System.out.println("To find your package, please enter your package Number: ");
         return input.nextLine();
     }
@@ -99,17 +100,18 @@ public class Views {
     // Function for printing a package
     public void printPackage(Package p) {
         System.out.println(
-                "$$$ Package Information $$$\n"+
-                "Package Number: "+p.getNumber()+
-                "\nPackage Company: "+p.getCompany()
+                "$$$ Package Information $$$\n" +
+                        "Package Number: " + p.getNumber() +
+                        "\nPackage Company: " + p.getCompany()
         );
     }
 
     /**
      * Update the information of a package
+     *
      * @return the updated package
      */
-    public Package update(Package p){
+    public Package update(Package p) {
         System.out.println("Please Enter New Package Number: ");
         String number = input.nextLine();
         System.out.println("\nPlease Enter New Package Company: ");
@@ -121,14 +123,15 @@ public class Views {
 
     /**
      * Function for deleting packages
+     *
      * @return 1: Delete, 2: Cancel
      */
-    public int delete(){
+    public int delete() {
         // Print delete message
         System.out.println(
-                "Make Sure You Want to Delete! \n"+
-                "1. Delete\n"+
-                "2. Cancel"
+                "Make Sure You Want to Delete! \n" +
+                        "1. Delete\n" +
+                        "2. Cancel"
         );
 
         // Catch User Input
@@ -149,16 +152,20 @@ public class Views {
     }
 
 
-    public void printAll(Package[] packages){
+    public void printAll(Package[] packages) {
         // Check if lockers are empty
-        if (packages == null || packages.length == 0){
+        if (packages == null || packages.length == 0) {
             System.out.println("$$$ No Packages Yet.\n");
             return;
         }
 
-        for (int i = 0; i < packages.length; i++){
-            printPackage(packages[i]);
+        for (Package aPackage : packages) {
+            printPackage(aPackage);
         }
     }
 
+    // TODO:
+    //  think about the mechanism of inserting for customers who need to insert their returned packages.
+    //  If a customer want to return a package, what should we do to put packages back into database?
+    //  How should we notify carriers for returned packages? Should we create interfaces for customers and carriers such that this works?
 }
