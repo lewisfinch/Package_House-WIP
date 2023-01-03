@@ -1,9 +1,6 @@
 package com.java.view;
 
 import com.java.bean.Package;
-
-import javax.swing.text.html.HTMLDocument;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Views {
@@ -131,6 +128,10 @@ public class Views {
         );
     }
 
+    public void printNull(){
+        System.out.println("Package not existed. Please check the info you entered");
+    }
+
     /**
      * Update the information of a package
      * @return the updated package
@@ -176,14 +177,27 @@ public class Views {
 
     // Function for printing all package information
     public void printAll(Package[][] packages){
+        int count = 0;
         for(int i = 0; i < 10; i++){
             for(int j = 0; j < 10; j++){
                 if(packages[i][j] != null){
+                    count++;
                     System.out.print((i+1) + " row, " + (j+1) + " column, ");
                     printPackage(packages[i][j]);
                 }
             }
         }
+        if(count == 0){
+            System.out.println("No package info");
+        }
+    }
+
+    public void packageExist(){
+        System.out.println("Package already existed. Please check the package number");
+    }
+
+    public void success(){
+        System.out.println("Operation Success");
     }
 
     // TODO:
