@@ -59,11 +59,11 @@ public class Package {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Package aPackage = (Package) o;
-        return code == aPackage.code;
+        return Objects.equals(number, aPackage.number);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(code);
+        return Objects.hash(number);
     }
 }
